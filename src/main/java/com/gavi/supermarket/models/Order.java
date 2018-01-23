@@ -1,6 +1,7 @@
 package com.gavi.supermarket.models;
 
 import com.gavi.supermarket.enums.Status;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by Hi on 23-01-2018.
  */
+@Data
 @Entity
 public class Order {
 

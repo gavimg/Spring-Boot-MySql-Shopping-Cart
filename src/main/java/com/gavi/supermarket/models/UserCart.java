@@ -1,5 +1,7 @@
 package com.gavi.supermarket.models;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +11,7 @@ import java.util.List;
 /**
  * Created by Hi on 23-01-2018.
  */
+@Data
 @Entity
 public class UserCart {
 
