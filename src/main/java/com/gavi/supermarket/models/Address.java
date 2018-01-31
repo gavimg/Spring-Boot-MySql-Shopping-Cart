@@ -11,6 +11,8 @@ import javax.persistence.Embeddable;
 @Data
 public class Address {
 
+    private long addressId;
+
     private String postboxNo;
 
     private String landmark;

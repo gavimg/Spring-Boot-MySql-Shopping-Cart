@@ -25,7 +25,7 @@ public class Order {
     @JoinColumn(name="userId")
     private User user;
 
-    private long userId;
+//    private long userId;
 
     private LocalDate orderDate;
 
