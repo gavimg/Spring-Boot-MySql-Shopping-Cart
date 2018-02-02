@@ -1,6 +1,6 @@
 package com.gavi.supermarket.service;
 
-import com.gavi.supermarket.models.Order;
+import com.gavi.supermarket.models.ProductOrder;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface OrderService {
 
-    Order placeOrder(Order dto);
+    ProductOrder placeOrder(ProductOrder dto);
 
-    Order findByOrderId(Long orderId);
+    ProductOrder findByOrderId(Long orderId);
 
-    List<Order> findByUserId(Long userId);
+    List<ProductOrder> findByUserId(Long userId);
 
-    Order updateOrder(Order dto, Long orderId);
+    ProductOrder updateOrder(ProductOrder dto, Long orderId);
 
     String cancelOrder(Long orderId);
 

@@ -1,5 +1,8 @@
 package com.gavi.supermarket.service;
 
+import com.gavi.supermarket.dto.ProductDTO;
+import com.gavi.supermarket.exceptions.ConflictException;
+import com.gavi.supermarket.exceptions.DataNotFoundException;
 import com.gavi.supermarket.models.Product;
 
 import java.util.List;
@@ -9,15 +12,15 @@ import java.util.List;
  */
 public interface ProductService {
 
-    Product addProduct(Product dto);
+    String addProduct(ProductDTO dto);
 
-    String uploadProducts(List<Product> products);
+    String uploadProducts(List<ProductDTO> products) throws ConflictException;
 
-    Product findProductById(Long productId);
+    ProductDTO findProductById(Long productId);
 
-    List<Product> retrieveProducts();
+    List<ProductDTO> retrieveProducts();
 
-    Product updateProduct(Long productId);
+    String updateProduct(ProductDTO dto, Long productId) throws DataNotFoundException;
 
-    String deleteProduct(Long productId);
+    String deleteProduct(Long productId) throws DataNotFoundException;
 }

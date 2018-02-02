@@ -1,6 +1,6 @@
 package com.gavi.supermarket.service.serviceimpl;
 
-import com.gavi.supermarket.models.Order;
+import com.gavi.supermarket.models.ProductOrder;
 import com.gavi.supermarket.service.OrderService;
 
 import java.util.List;
@@ -11,22 +11,22 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Override
-    public Order placeOrder(Order dto) {
+    public ProductOrder placeOrder(ProductOrder dto) {
         return null;
     }
 
     @Override
-    public Order findByOrderId(Long orderId) {
+    public ProductOrder findByOrderId(Long orderId) {
         return null;
     }
 
     @Override
-    public List<Order> findByUserId(Long userId) {
+    public List<ProductOrder> findByUserId(Long userId) {
         return null;
     }
 
     @Override
-    public Order updateOrder(Order dto, Long orderId) {
+    public ProductOrder updateOrder(ProductOrder dto, Long orderId) {
         return null;
     }
 

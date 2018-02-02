@@ -1,6 +1,8 @@
 package com.gavi.supermarket.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 
@@ -8,10 +10,9 @@ import javax.persistence.Embeddable;
  * Created by Hi on 23-01-2018.
  */
 @Embeddable
-@Data
+@Getter
+@Setter
 public class Address {
-
-    private long addressId;
 
     private String postboxNo;
 

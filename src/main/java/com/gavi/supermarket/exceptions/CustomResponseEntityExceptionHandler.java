@@ -18,8 +18,8 @@ import java.util.Date;
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
+    @ExceptionHandler(DataNotFoundException.class)
+    public final ResponseEntity<Object> handleAllException(DataNotFoundException ex, WebRequest request) {
         ExceptionResponse exceptionResponse =  new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 
         return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);

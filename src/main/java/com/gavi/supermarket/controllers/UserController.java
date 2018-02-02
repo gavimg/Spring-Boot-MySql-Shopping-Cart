@@ -16,6 +16,4 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiModel("All User related operations")
 public class UserController {
 
-
-
 }

@@ -1,6 +1,9 @@
 package com.gavi.supermarket.service;
 
 import com.gavi.supermarket.dto.LoginDTO;
+import com.gavi.supermarket.dto.UserDTO;
+import com.gavi.supermarket.dto.UserResponseDTO;
+import com.gavi.supermarket.exceptions.DataNotFoundException;
 import com.gavi.supermarket.models.User;
 import org.springframework.http.ResponseEntity;
 
@@ -9,13 +12,13 @@ import org.springframework.http.ResponseEntity;
  */
 public interface UserService {
 
-    User addUser(User dto);
+    String addUser(UserDTO dto);
 
-    User updateUser(User dto, Long userId);
+    String updateUser(UserDTO dto, Long userId) throws DataNotFoundException;
 
-    User findByUserId(Long userId);
+    UserResponseDTO findByUserId(Long userId);
 
-    User login(LoginDTO dto);
+    UserResponseDTO login(LoginDTO dto) throws DataNotFoundException;
 
     String deleteUser(Long userId);
 }

@@ -2,6 +2,9 @@ package com.gavi.supermarket.models;
 
 import com.gavi.supermarket.enums.Status;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,16 +13,17 @@ import java.util.List;
 /**
  * Created by Hi on 23-01-2018.
  */
-@Data
+@Getter
+@Setter
 @Entity
-public class Order {
+public class ProductOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long orderId;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Product> products;
+    private List<Product> pproducts;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userId")
@@ -27,10 +31,10 @@ public class Order {
 
 //    private long userId;
 
-    private LocalDate orderDate;
+    private LocalDate oorderDate;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status sstatus;
 
 
 }

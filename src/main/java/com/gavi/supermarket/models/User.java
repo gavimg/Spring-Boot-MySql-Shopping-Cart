@@ -1,7 +1,8 @@
 package com.gavi.supermarket.models;
 
 import com.gavi.supermarket.enums.Role;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.List;
 /**
  * Created by Hi on 23-01-2018.
  */
-@Data
+@Getter
+@Setter
 @Entity
 public class User {
 
@@ -28,13 +30,13 @@ public class User {
     private String email;
 
     @Embedded
-    private Address[] address;
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<ProductOrder> orders;
 
 
 }
