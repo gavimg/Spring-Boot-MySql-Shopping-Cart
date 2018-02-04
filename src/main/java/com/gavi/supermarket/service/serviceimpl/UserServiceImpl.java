@@ -1,11 +1,12 @@
 package com.gavi.supermarket.service.serviceimpl;
 
-import com.gavi.supermarket.dto.AdderessDTO;
+import com.gavi.supermarket.dto.AddressDTO;
 import com.gavi.supermarket.dto.LoginDTO;
 import com.gavi.supermarket.dto.UserDTO;
 import com.gavi.supermarket.dto.UserResponseDTO;
 import com.gavi.supermarket.enums.Role;
 import com.gavi.supermarket.exceptions.DataNotFoundException;
+import com.gavi.supermarket.exceptions.DuplicateElementException;
 import com.gavi.supermarket.models.Address;
 import com.gavi.supermarket.models.User;
 import com.gavi.supermarket.repositories.UserRepository;
@@ -27,13 +28,37 @@ public class UserServiceImpl implements UserService {
     private DozerBeanMapper dozerBeanMapper;
 
     @Override
-    public String addUser(UserDTO dto) {
+    public String addUser(UserDTO dto) throws DuplicateElementException {
 
-        User user = dozerBeanMapper.map(dto, User.class);
+//        User user = dozerBeanMapper.map(dto, User.class);
 
-        userRepository.save(user);
+        User userEsist = userRepository.findByUsername(dto.getUsername());
+        if(userEsist == null) {
+            User user  = new User();
+            user.setFirstName(dto.getFirstName());
+            user.setLastName(dto.getLastName());
+            user.setRole(Role.valueOf(dto.getRole()));
+            // Embedded Object
+            Address address = new Address();
+            AddressDTO addressDTO = dto.getAddresses();
+            address.setCity(addressDTO.getCity());
+            address.setLandmark(addressDTO.getLandmark());
+            address.setPhoneNumber(addressDTO.getPhoneNumber());
+            address.setPostboxNo(addressDTO.getPostboxNo());
+            address.setZipcode(addressDTO.getZipcode());
+            user.setAddress(address);
+            user.setEmail(dto.getEmail());
+            user.setUsername(dto.getUsername());
+            user.setPassword(dto.getPassword());
+            userRepository.save(user);
+            return "SUCCESS";
+        } else {
+            throw new DuplicateElementException("User with username "+ dto.getUsername()+ " already present");
+        }
 
-        return "SUCCESS";
+
+
+
     }
 
     @Override
@@ -46,7 +71,7 @@ public class UserServiceImpl implements UserService {
             user.setLastName(dto.getLastName());
             user.setRole(Role.valueOf(dto.getRole()));
             Address address = user.getAddress();
-            AdderessDTO addressDTO = dto.getAddresses();
+            AddressDTO addressDTO = dto.getAddresses();
             address.setCity(addressDTO.getCity());
             address.setLandmark(addressDTO.getLandmark());
             address.setPhoneNumber(addressDTO.getPhoneNumber());

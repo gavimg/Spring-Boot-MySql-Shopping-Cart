@@ -4,6 +4,7 @@ import com.gavi.supermarket.dto.LoginDTO;
 import com.gavi.supermarket.dto.UserDTO;
 import com.gavi.supermarket.dto.UserResponseDTO;
 import com.gavi.supermarket.exceptions.DataNotFoundException;
+import com.gavi.supermarket.exceptions.DuplicateElementException;
 import com.gavi.supermarket.models.User;
 import org.springframework.http.ResponseEntity;
 
@@ -12,7 +13,7 @@ import org.springframework.http.ResponseEntity;
  */
 public interface UserService {
 
-    String addUser(UserDTO dto);
+    String addUser(UserDTO dto) throws DuplicateElementException;
 
     String updateUser(UserDTO dto, Long userId) throws DataNotFoundException;
 

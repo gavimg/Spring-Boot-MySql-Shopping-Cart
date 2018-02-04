@@ -4,4 +4,37 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
+    <mapping>
+        <class-a>com.gavi.supermarket.dto.AddressDTO</class-a>
+        <class-b>com.gavi.supermarket.models.Address</class-b>
+        <field>
+            <a>dto.city</a>
+            <b>city</b>
+        </field>
+        <field>
+            <a>dto.landmark</a>
+            <b>landmark</b>
+        </field>
+        <field>
+            <a>dto.zipcode</a>
+            <b>zipcode</b>
+        </field>
+        <field>
+            <a>dto.phoneNumber</a>
+            <b>phoneNumber</b>
+        </field>
+        <field>
+            <a>dto.postboxNo</a>
+            <b>postboxNo</b>
+        </field>
+    </mapping>
+    <!--private String postboxNo;-->
+
+    <!--private String landmark;-->
+
+    <!--private String zipcode;-->
+
+    <!--private String phoneNumber;-->
+
+    <!--private String city;-->
 </mappings>

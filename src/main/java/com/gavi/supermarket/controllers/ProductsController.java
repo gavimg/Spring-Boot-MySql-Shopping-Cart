@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Hi on 24-01-2018.
  */
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 @Api("Product Related Operation")
 public class ProductsController {
 
@@ -28,18 +28,18 @@ public class ProductsController {
     private ProductService productService;
 
 
-    @ApiOperation(value = "add product", notes = "this api is used to create tonic", httpMethod = "POST")
+    @ApiOperation(value = "Add product", notes = "This api is used to store a product", httpMethod = "POST")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @PostMapping(consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/product", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> addProduct(@RequestBody ProductDTO dto) {
         return new ResponseEntity<SuccessResponseDTO>(new SuccessResponseDTO(productService.addProduct(dto)), HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "add products", notes = "this api is used to create tonic", httpMethod = "POST")
+    @ApiOperation(value = "Add products", notes = "This api is used to store multiple products", httpMethod = "POST")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @PostMapping(value = "/products", consumes = "application/json", produces = "application/json")
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> addMultipleProducts(@RequestBody List<ProductDTO> products) throws ConflictException {
 
         return  new ResponseEntity<SuccessResponseDTO>(new SuccessResponseDTO(productService.uploadProducts(products)), HttpStatus.CREATED);
@@ -49,32 +49,32 @@ public class ProductsController {
     @ApiOperation(value = "Get All Products", notes = "this api is used to get all products", httpMethod = "GET")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @GetMapping(value = "/products", produces = "application/json")
+    @GetMapping(produces = "application/json")
     public  ResponseEntity<?> getProducts() {
         return new ResponseEntity<List<ProductDTO>>(productService.retrieveProducts(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "get product", notes = "this api is used to get  product by Id", httpMethod = "GET")
+    @ApiOperation(value = "Get product", notes = "this api is used to get  product by Id", httpMethod = "GET")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @GetMapping(value = "/products/{productId}", produces = "application/json")
+    @GetMapping(value = "/product/{productId}", produces = "application/json")
     public ResponseEntity<?> getProduct(@PathVariable Long productId) {
         return new ResponseEntity<ProductDTO>(productService.findProductById(productId), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "update product", notes = "this api is used to update product", httpMethod = "PUT")
+    @ApiOperation(value = "Update product", notes = "this api is used to update product", httpMethod = "PUT")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @PutMapping(value = "/products/{productId}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/product/{productId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> updateProduct(@RequestBody ProductDTO dto, @PathVariable Long productId) throws DataNotFoundException {
         return new ResponseEntity<SuccessResponseDTO>(new SuccessResponseDTO(productService.updateProduct(dto, productId)), HttpStatus.ACCEPTED);
     }
 
 
-    @ApiOperation(value = "delete product", notes = "this api is used to delete  product by Id", httpMethod = "DELETE")
+    @ApiOperation(value = "Delete product", notes = "this api is used to delete  product by Id", httpMethod = "DELETE")
     @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server error"),
             @ApiResponse(code = 401, message = "UnAuthorized") })
-    @DeleteMapping(value = "/products/{productId}", produces = "application/json")
+    @DeleteMapping(value = "/product/{productId}", produces = "application/json")
     public ResponseEntity<?> deleteProduct(@PathVariable Long productId) throws DataNotFoundException {
         return new ResponseEntity<SuccessResponseDTO>(new SuccessResponseDTO(productService.deleteProduct(productId)), HttpStatus.OK);
     }

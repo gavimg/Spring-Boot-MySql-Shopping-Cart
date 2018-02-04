@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * Created by Hi on 02-02-2018.
  */
-
+@Setter
+@Getter
 public class SuccessResponseDTO {
 
     private String message;

@@ -1,15 +1,11 @@
 package com.gavi.supermarket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.List;
+import lombok.*;
 
 /**
  * Created by Hi on 31-01-2018.
  */
-@Getter
-@Setter
+@Data
 public class UserDTO {
 
     private String firstName;
@@ -22,7 +18,9 @@ public class UserDTO {
 
     private String email;
 
-    private AdderessDTO addresses;
+    private AddressDTO addresses;
 
     private String role;
+
+    public  UserDTO(){}
 }

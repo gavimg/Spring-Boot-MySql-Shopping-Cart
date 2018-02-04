@@ -30,5 +30,20 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
         return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
     };
+
+    @ExceptionHandler(DuplicateElementException.class)
+    public final ResponseEntity<Object> handleDuplicateEntryException(DuplicateElementException ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =  new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<Object>(exceptionResponse, HttpStatus.CONFLICT);
+    };
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Object> handleOtherException(Exception ex, WebRequest request) {
+        System.out.println(ex);
+        ExceptionResponse exceptionResponse =  new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
+    };
 }
 
