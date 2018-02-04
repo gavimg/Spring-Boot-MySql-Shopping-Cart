@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
             product.setBarcode(dto.getBarcode());
             product.setCategory(Category.valueOf(dto.getCategory()));
             product.setProductCost(dto.getProductCost());
-            product.setProductImage(dto.getProductImage());
+         //   product.setProductImage(dto.getProductImage());
             product.setProductDescription(dto.getProductDescription());
             product.setProductSpecification(dto.getProductSpecification());
             productRepository.flush();
