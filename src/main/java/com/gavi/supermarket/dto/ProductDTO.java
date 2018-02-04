@@ -12,7 +12,7 @@ public class ProductDTO {
 
     private String productName;
     private String productCost;
-   // private byte[] productImage;
+    private byte[] productImage;
     private String productDescription;
     private String productSpecification;
     private String category;

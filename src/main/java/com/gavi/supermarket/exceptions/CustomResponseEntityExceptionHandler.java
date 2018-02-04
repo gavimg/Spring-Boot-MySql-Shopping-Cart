@@ -1,4 +1,10 @@
+
 package com.gavi.supermarket.exceptions;
+
+import com.gavi.supermarket.exceptions.DataNotFoundException;
+import com.gavi.supermarket.exceptions.ExceptionResponse;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +20,7 @@ import java.util.Date;
  * Created by Hi on 24-01-2018.
  */
 
-@ControllerAdvice
+@ControllerAdvice("com.gavi.supermarket")
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -25,3 +31,4 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
     };
 }
+
