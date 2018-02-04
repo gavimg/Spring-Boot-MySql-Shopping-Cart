@@ -14,7 +14,7 @@ import java.util.Date;
  * Created by Hi on 24-01-2018.
  */
 
-@ControllerAdvice
+@ControllerAdvice("com.gavi.supermarket")
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
