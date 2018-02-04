@@ -8,7 +8,8 @@ import lombok.*;
  */
 //@Getter
 //@Setter
-@Data
+//@Getter
+//@Setter
 public class AddressDTO {
 
     private String postboxNo;
@@ -23,4 +24,43 @@ public class AddressDTO {
 
     public AddressDTO() {}
 
+    public String getPostboxNo() {
+        return postboxNo;
+    }
+
+    public void setPostboxNo(String postboxNo) {
+        this.postboxNo = postboxNo;
+    }
+
+    public String getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

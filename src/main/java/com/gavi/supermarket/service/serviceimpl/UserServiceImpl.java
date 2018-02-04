@@ -31,6 +31,8 @@ public class UserServiceImpl implements UserService {
     public String addUser(UserDTO dto) throws DuplicateElementException {
 
 //        User user = dozerBeanMapper.map(dto, User.class);
+//        userRepository.save(user);
+//        return "SUCCESS";
 
         User userEsist = userRepository.findByUsername(dto.getUsername());
         if(userEsist == null) {
@@ -102,12 +104,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO login(LoginDTO dto) throws DataNotFoundException {
 
-        User user = userRepository.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
-
+        User user = userRepository.findByUsername(dto.getUsername());
+        System.out.println("USER ----------------------------------------------------------------->"+user);
         if(user != null) {
             UserResponseDTO userResponseDTO = dozerBeanMapper.map(user, UserResponseDTO.class);
-
             return  userResponseDTO;
+
         } else {
             throw new DataNotFoundException("User Not Found");
         }
